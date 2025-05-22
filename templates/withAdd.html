@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'withAdd.css' %}">
+    <title>تنبؤ المقاومة مع اضافات</title>
+
+</head>
+
+<body>
+    <h1>تنبؤ المقاومة </h1>
+    <h1>أدخل القيم:</h1>
+    <form method="POST" action="{% url 'withAdd' %}">
+        {% csrf_token %}
+        <div class="nput-row">
+            <div class="label">
+                <label for="opc">OPC:</label>
+            </div>
+            <input type="text" id="opc" name="opc" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="fa">FA:</label>
+            </div>
+            <input type="text" id="fa" name="fa" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="ggbs">GGBS:</label>
+            </div>
+            <input type="text" id="ggbs" name="ggbs" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="sf">SF:</label>
+            </div>
+            <input type="text" id="sf" name="sf" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="cc">CC:</label>
+            </div>
+            <input type="text" id="cc" name="cc" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="nca">NCA:</label>
+            </div>
+            <input type="text" id="nca" name="nca" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="rca">RCA:</label>
+            </div>
+            <input type="text" id="rca" name="rca" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="nfa">NFA:</label>
+            </div>
+            <input type="text" id="nfa" name="nfa" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="rfa">RFA:</label>
+            </div>
+            <input type="text" id="rfa" name="rfa" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="sp">SP: </label>
+            </div>
+            <input type="text" id="sp" name="sp" required><br />
+        </div>
+        <div class="nput-row">
+            <div class="label">
+                <label for="wb">w/b:</label>
+            </div>
+            <input type="text" id="wb" name="wb" required><br />
+        </div>
+        <button type="submit">تنبؤالمقاومة</button>
+    </form>
+
+    {% if predicted_output is not None %}
+    <div class="result">
+        النتيجة المتوقعة: {{ predicted_output }}
+        <br><br>
+        الدقة :{{accuracy_percentage}}
+    </div>
+    {% endif %}
+
+    <br>
+    <button id="b1" onclick="redirectToHome()">العودة الى الصفحة الرئيسية</button>
+    <script>
+        function redirectToHome() {
+            window.location.href = "{% url 'home' %}";
+        }
+    </script>
+    <br><br><br>
+    <div id="bottomLeftFrame">
+        <div class="copyright">Copyright © Ammar 2025</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'withAdd.css' %}">
+    <title>تنبؤ المقاومة بدون اضافات</title>
+    
+</head>
+<body>
+    <h1>تنبؤ المقاومة</h1>
+    <form  method="POST" action="{% url 'without' %}">
+        {% csrf_token %}
+        <div id="inputs-container">
+
+            <div class="input-group">
+                <label for="opc">OPC:</label>
+                <input type="text" id="opc" name="opc" required>
+            </div>
+            <div class="input-group">
+                <label for="nca">NCA:</label>
+                <input type="text" id="nca" name="nca" required>
+            </div>
+            <div class="input-group">
+                <label for="rca">RCA:</label>
+                <input type="text" id="rca" name="rca" required>
+            </div>
+            <div class="input-group">
+                <label for="nfa">NFA:</label>
+                <input type="text" id="nfa" name="nfa" required>
+            </div>
+            <div class="input-group">
+                <label for="rfa">RFA:</la5el>
+                <input type="text" id="rfa" name="rfa" required>
+            </div>
+            <div class="input-group">
+                <label for="sp">SP:</label>
+                <input type="text" id="sp" name="sp" required>
+            </div>
+            <div class="input-group">
+                <label for="wb">w/b:</label>
+                <input type="text" id="wb" name="wb" required>
+            </div>
+        </div>
+        <button type="submit">تنبؤ المقاومة</button>
+    </form>
+{% if predicted_output is not None %}
+<div class="result">
+    النتيجة المتوقعة: {{ predicted_output }}
+</div>
+{% endif %}
+<br><br>
+ <button id="b1" onclick="redirectToHome()">العودة الى الصفحة الرئيسية</button>
+    <script>
+        function redirectToHome() {
+            window.location.href = "{% url 'home' %}";
+        }
+    </script>
+      
+    <br><br><br>
+<div id="bottomLeftFrame">
+    <div class="copyright">Copyright © Ammar 2025</div>
+  </div>
+</body>
+</html>
+
+
+

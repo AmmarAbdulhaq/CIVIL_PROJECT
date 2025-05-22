@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>HOME PAGE</title>
+</head>
+<body>
+<h1>التنبؤ بمقاومة الخرسانة على الضغط</h1>
+    <br><br><br>
+    <button id="b1" onclick="redirectToWithAdd()">التنبؤ بالمقاومة مع اضافات </button>
+    <script>
+        function redirectToWithAdd() {
+            window.location.href = "{% url 'withAdd' %}";
+        }
+    </script>
+     <br><br>
+    <button id="b2" onclick="redirectToWithout()">التنبؤ المقاومة بدون اضافات</button>
+    <script>
+        function redirectToWithout() {
+            window.location.href = "{% url 'without' %}";
+        }
+    </script>
+
+<br><br><br><br><br><br><br>
+<h2>Student preparation:</h2>
+
+<h3>Firas Ammar</h3>
+<h3>Olama Alshehet</h3>
+<h3>Ghydaa Alhasan</h3>
+<br><br>
+<div id="bottomLeftFrame">
+    
+    <div class="copyright">Copyright  © Ammar 2025</div>
+  </div>
+  
+</body>
+</html>
